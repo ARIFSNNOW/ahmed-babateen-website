@@ -1,0 +1,72 @@
+Dr. Ahmed Babateen website — Vercel deployment guide
+
+WHAT YOU NEED
+- This source ZIP. Extract it only when updating an existing dropped project or using GitHub.
+- A GitHub account is optional: you can also use Vercel Drop with the source ZIP.
+- A Vercel account. Vercel's Hobby plan is for personal or non-commercial use;
+  plan for Pro for this professional dental website.
+- Your own domain, if you want a branded address, and access to its DNS settings.
+
+SIMPLEST METHOD: VERCEL DROP
+1. Sign in at https://vercel.com/drop and choose the appropriate team/plan.
+2. Drag ahmed-babateen-vercel-source.zip into the upload area.
+3. Review the detected Next.js settings and select Deploy.
+4. Open the production URL returned by Vercel.
+5. Follow the custom-domain and final-URL sections below.
+
+ALTERNATIVE: UPLOAD SOURCE TO GITHUB
+1. Create a new GitHub repository (private is fine).
+2. Extract ahmed-babateen-vercel-source.zip.
+3. Upload the extracted files and folders to the repository ROOT, so package.json
+   appears at the top level. Do not upload only the ZIP file.
+4. Do not upload node_modules, .next, out, .git, or .env.local.
+   This package already excludes them.
+
+DEPLOY TO VERCEL
+1. Sign in to Vercel with GitHub, or connect GitHub to your Vercel account.
+2. Choose Add New / Project and import the repository.
+3. Use Framework Preset: Next.js. Leave the detected output settings at default.
+4. Root Directory: the folder containing package.json (repository root here).
+5. Build Command: npm run build. Use the detected install command; npm ci also works.
+6. Choose Node.js 22.x or newer supported by Vercel.
+7. Deploy and open the production URL Vercel returns.
+
+ADD YOUR DOMAIN
+1. Open the Vercel project, then Settings > Domains > Add Existing.
+2. Enter your purchased domain and follow the www / root-domain prompts.
+3. At your domain provider, copy the EXACT DNS records Vercel displays.
+   Record values can be project-specific. Do not use an old generic IP or CNAME.
+4. Wait for Vercel to show Valid Configuration. HTTPS is configured automatically.
+5. If you do not yet own a domain, purchase one from Vercel or a registrar first.
+
+SET THE FINAL WEBSITE URL
+In Vercel Settings > Environment Variables, add:
+
+    NEXT_PUBLIC_SITE_URL=https://your-actual-domain.com
+
+Replace the example with your final real domain. Use the verified vercel.app
+production URL if you are not adding a custom domain yet. Apply it to Production,
+then redeploy. This updates canonical, social preview, sitemap, robots, and Person
+structured-data URLs. The variable is public configuration, not a password.
+
+FINAL CHECK
+Open the final domain in an incognito/private browser and check Arabic and English,
+the mobile menu, phone/email/social links, portraits, slideshow, and all3 sliders.
+The generated dental comparison examples remain labeled as demonstrations.
+
+The source includes the latest white, stain-free AFTER images and the unchanged
+BEFORE images. All4 uploaded portrait/hero PNGs are preserved as supplied.
+
+Official references:
+https://vercel.com/docs/frameworks/full-stack/nextjs
+https://vercel.com/docs/domains/working-with-domains/add-a-domain
+https://vercel.com/legal/terms
+
+LATEST IMAGE UPDATE
+The active consultation and portrait hero slides now include surgical masks.
+About Ahmed uses the exact full-resolution portrait selected from the owner's
+shared image link. The original uploaded images remain in public/images/.
+To update an existing Vercel Drop project, extract this ZIP and drag the extracted
+source folder onto that project in the Vercel dashboard. This creates a new production
+deployment of the same project. Rebuilding an old deployment without uploading
+the changed source will reuse the old images. Keep NEXT_PUBLIC_SITE_URL at your real domain.
